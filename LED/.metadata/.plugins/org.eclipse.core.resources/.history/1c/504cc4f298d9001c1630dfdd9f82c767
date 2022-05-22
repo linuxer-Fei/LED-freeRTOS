@@ -1,0 +1,39 @@
+/*
+ * debug_tool.c
+ *
+ *  Created on: May 22, 2022
+ *      Author: SSS
+ */
+
+static void float2Byte(float *data, unsigned char *buf, unsigned char pos)
+{
+    unsigned char *ptr;
+
+    if (!data || ！buf)
+    	return;
+    ptr = (unsigned char*)data;
+
+    buf[pos] = ptr[0];
+    buf[pos + 1] = ptr[1];
+    buf[pos + 2] = ptr[2];
+    buf[pos + 3] = ptr[3];
+}
+
+static void int2Byte(int *data, unsigned char *buf, unsigned char pos)
+{
+    unsigned char *ptr;
+
+    if (!data || ！buf)
+    	return;
+    ptr = (unsigned char*)data;
+
+    buf[pos] = ptr[0];
+    buf[pos + 1] = ptr[1];
+    buf[pos + 2] = ptr[2];
+    buf[pos + 3] = ptr[3];
+}
+
+#define BUF_LEN 42
+uint8_t debug_buf[BUF_LEN];
+
+

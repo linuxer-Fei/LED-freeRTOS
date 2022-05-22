@@ -22,6 +22,7 @@
 #include "task.h"
 #include "main.h"
 #include "cmsis_os.h"
+#include "debug_tool.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -116,13 +117,28 @@ void StartDefaultTask(void *argument)
   /* USER CODE BEGIN StartDefaultTask */
   /* Infinite loop */
   extern int keyIntOccered;
+  struct db_data data = {
+		.chl = CHANNEL_1,
+		.isFloat = 1,
+		.fData = 3.14,
+  };
+  db_creat(&data);
+  float val = 0;
   for(;;)
   {
 	  if (keyIntOccered) {
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
-		  osDelay(1000);
+
+		  val += 0.1f;
+		  if (val > 3.14)
+			  val = 0;
+		  db_data_update(&data, &val);
+		  db_show_data();
+
+		  osDelay(50);
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
-		  osDelay(1000);
+		  db_show_data();
+		  osDelay(50);
 	  } else {
 		  osDelay(1);
 	  }

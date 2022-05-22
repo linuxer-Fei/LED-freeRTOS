@@ -1,0 +1,16 @@
+/*
+ * debug_tool.c
+ *
+ *  Created on: May 22, 2022
+ *      Author: SSS
+ */
+
+void float2Byte(float *target, unsigned char *buf,unsigned char pos)
+{
+    unsigned char *point;
+    point = (unsigned char*)target;	  //得到float的地址
+    buf[beg]   = point[0];
+    buf[beg+1] = point[1];
+    buf[beg+2] = point[2];
+    buf[beg+3] = point[3];
+}
