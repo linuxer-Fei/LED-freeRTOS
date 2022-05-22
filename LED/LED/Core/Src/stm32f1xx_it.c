@@ -59,6 +59,8 @@ extern TIM_HandleTypeDef htim3;
 
 /* USER CODE BEGIN EV */
 
+int keyIntOccered;
+
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -162,7 +164,6 @@ void DebugMon_Handler(void)
 /**
   * @brief This function handles EXTI line[9:5] interrupts.
   */
-int keyIntOccered;
 void EXTI9_5_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI9_5_IRQn 0 */

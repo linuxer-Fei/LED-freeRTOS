@@ -15,6 +15,8 @@
   *
   ******************************************************************************
   */
+#include "debug_tool.h"
+#include "mpu6050.h"
 /* USER CODE END Header */
 
 /* Includes ------------------------------------------------------------------*/
@@ -22,7 +24,6 @@
 #include "task.h"
 #include "main.h"
 #include "cmsis_os.h"
-#include "debug_tool.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -117,27 +118,64 @@ void StartDefaultTask(void *argument)
   /* USER CODE BEGIN StartDefaultTask */
   /* Infinite loop */
   extern int keyIntOccered;
-  struct db_data data = {
+  struct db_data gyro_x = {
+		.chl = CHANNEL_0,
+		.isFloat = 1,
+  };
+  struct db_data gyro_y = {
 		.chl = CHANNEL_1,
 		.isFloat = 1,
-		.fData = 3.14,
   };
-  db_creat(&data);
-  float val = 0;
+  struct db_data gyro_z = {
+		.chl = CHANNEL_2,
+		.isFloat = 1,
+  };
+  struct db_data acc_x = {
+		.chl = CHANNEL_3,
+		.isFloat = 1,
+  };
+  struct db_data acc_y = {
+		.chl = CHANNEL_4,
+		.isFloat = 1,
+  };
+  struct db_data acc_z = {
+		.chl = CHANNEL_5,
+		.isFloat = 1,
+  };
+  db_creat(&gyro_x);
+  db_creat(&gyro_y);
+  db_creat(&gyro_z);
+  db_creat(&acc_x);
+  db_creat(&acc_y);
+  db_creat(&acc_z);
+  struct gyro_acc_data data;
+
   for(;;)
   {
 	  if (keyIntOccered) {
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
 
-		  val += 0.1f;
-		  if (val > 3.14)
-			  val = 0;
-		  db_data_update(&data, &val);
+		  mpu6050_get_gyro_acc_data(&data);
+		  db_data_update(&gyro_x, &data.gyro_x);
+		  db_data_update(&gyro_y, &data.gyro_y);
+		  db_data_update(&gyro_z, &data.gyro_z);
+		  db_data_update(&acc_x, &data.acc_x);
+		  db_data_update(&acc_y, &data.acc_y);
+		  db_data_update(&acc_z, &data.acc_z);
 		  db_show_data();
 
 		  osDelay(50);
 		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
+
+		  mpu6050_get_gyro_acc_data(&data);
+		  db_data_update(&gyro_x, &data.gyro_x);
+		  db_data_update(&gyro_y, &data.gyro_y);
+		  db_data_update(&gyro_z, &data.gyro_z);
+		  db_data_update(&acc_x, &data.acc_x);
+		  db_data_update(&acc_y, &data.acc_y);
+		  db_data_update(&acc_z, &data.acc_z);
 		  db_show_data();
+
 		  osDelay(50);
 	  } else {
 		  osDelay(1);

@@ -1,0 +1,13 @@
+/*
+ * mpu6050.h
+ *
+ *  Created on: May 22, 2022
+ *      Author: SSS
+ */
+
+#ifndef INC_MPU6050_H_
+#define INC_MPU6050_H_
+
+
+
+#endif /* INC_MPU6050_H_ */

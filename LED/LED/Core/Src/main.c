@@ -15,10 +15,12 @@
   *
   ******************************************************************************
   */
+#include "mpu6050.h"
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
+#include "i2c.h"
 #include "usart.h"
 #include "gpio.h"
 
@@ -89,8 +91,9 @@ int main(void)
   MX_GPIO_Init();
   MX_USART3_UART_Init();
   MX_USART1_UART_Init();
+  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-
+  mpu6050_init();
   /* USER CODE END 2 */
 
   /* Init scheduler */

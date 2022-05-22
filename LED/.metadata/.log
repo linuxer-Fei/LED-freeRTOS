@@ -604,3 +604,62 @@ org.eclipse.core.runtime.CoreException: Corrupted database: LED.1653184862808.pd
 
 !ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-05-22 10:42:43.076
 !MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2022-05-22 20:30:30.443 -----------------------------------------------
+eclipse.buildId=Version 1.9.0
+java.version=11.0.11
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_CN
+Framework arguments:  D:\temp\LED-freeRTOS\LED\LED\.project
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 D:\temp\LED-freeRTOS\LED\LED\.project
+
+!ENTRY org.eclipse.core.resources 2 10035 2022-05-22 20:30:40.181
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-05-22 20:30:58.346
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-05-22 20:30:58.443
+!MESSAGE Log4j initialized with config file D:\temp\LED-freeRTOS\LED\.metadata\.log4j.xml
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-05-22 20:31:05.719
+!MESSAGE Failed to open C/C++ index file D:\temp\LED-freeRTOS\LED\.metadata\.plugins\org.eclipse.cdt.core\LED.1653184862808.pdom - rebuilding the index
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: LED.1653184862808.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:518)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:140)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:479)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:460)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:435)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:67)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:62)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:391)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:592)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:61)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-05-22 20:31:05.720
+!MESSAGE Corrupted database: LED.1653184862808.pdom
+
+!ENTRY org.eclipse.cdt.core 4 0 2022-05-22 20:31:05.722
+!MESSAGE Error
+!STACK 1
+org.eclipse.core.runtime.CoreException: Corrupted database: LED.1653184862808.pdom
+	at org.eclipse.cdt.internal.core.pdom.db.Database.databaseCorruptionDetected(Database.java:323)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getChunk(Database.java:303)
+	at org.eclipse.cdt.internal.core.pdom.db.Database.getRecPtr(Database.java:518)
+	at org.eclipse.cdt.internal.core.pdom.dom.PDOMLinkage.getLinkageID(PDOMLinkage.java:140)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.readLinkages(PDOM.java:479)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.loadDatabase(PDOM.java:460)
+	at org.eclipse.cdt.internal.core.pdom.PDOM.<init>(PDOM.java:435)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:67)
+	at org.eclipse.cdt.internal.core.pdom.WritablePDOM.<init>(WritablePDOM.java:62)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.getOrCreatePDOM(PDOMManager.java:399)
+	at org.eclipse.cdt.internal.core.pdom.PDOMManager.createIndexer(PDOMManager.java:592)
+	at org.eclipse.cdt.internal.core.pdom.PDOMSetupJob.run(PDOMSetupJob.java:61)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.cdt.core 4 0 2022-05-22 20:31:05.722
+!MESSAGE Corrupted database: LED.1653184862808.pdom
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-05-22 20:31:08.656
+!MESSAGE Started RMI Server, listening on port 41337
