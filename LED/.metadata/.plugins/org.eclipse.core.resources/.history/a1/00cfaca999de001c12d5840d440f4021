@@ -1,0 +1,52 @@
+/*
+ * debug_tool.h
+ *
+ *  Created on: May 22, 2022
+ *      Author: SSS
+ */
+
+#ifndef INC_DEBUG_TOOL_H_
+#define INC_DEBUG_TOOL_H_
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+enum channel {
+	CHANNEL_0,
+	CHANNEL_1,
+	CHANNEL_2,
+	CHANNEL_3,
+	CHANNEL_4,
+	CHANNEL_5,
+	CHANNEL_6,
+	CHANNEL_7,
+	CHANNEL_8,
+	CHANNEL_9,
+	CHANNEL_MAX
+};
+
+struct db_data {
+	enum channel chl;
+	unsigned char isFloat;
+	union {
+		void *data;
+		int iData;
+		float fData;
+	};
+};
+
+void db_creat(struct db_data * data);
+void db_data_update(struct db_data * data, void* value);
+void db_show_data(void);
+//void os_log(char *format, ...);
+
+#define OS_LOG(args...) do {\
+	printf("%s : ", __FUNCTION__ , args);\
+} while (0)
+
+
+#ifdef __cplusplus
+}
+#endif
+#endif /* INC_DEBUG_TOOL_H_ */

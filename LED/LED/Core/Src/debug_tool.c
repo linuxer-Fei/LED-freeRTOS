@@ -4,17 +4,46 @@
  *  Created on: May 22, 2022
  *      Author: SSS
  */
+#include <stdio.h>
+#include <stdarg.h>
+#include <string.h>
 #include "usart.h"
 #include "stm32f1xx_hal_uart.h"
 #include "debug_tool.h"
+#include "FreeRTOS.h"
+#include "task.h"
 
-static void float2Byte(float *data, unsigned char *buf, unsigned char pos)
+#ifdef __GNUC__
+#define PUTCHAR_PROTOTYPE int __io_putchar(int ch)
+#else
+#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#endif
+
+PUTCHAR_PROTOTYPE
 {
-    unsigned char *ptr;
+	if (__get_IPSR() != 0) {
+	   taskDISABLE_INTERRUPTS();
+	} else {
+		while (HAL_UART_GetState(&huart1) == HAL_UART_STATE_BUSY_TX)
+			taskYIELD();
+	}
+
+	HAL_UART_Transmit(&huart1, (uint8_t*)&ch, 1, HAL_MAX_DELAY);
+
+	if(__get_IPSR() != 0)
+		taskENABLE_INTERRUPTS();
+
+	return ch;
+}
+
+
+static void float2Byte(float *data, char *buf, unsigned char pos)
+{
+    char *ptr;
 
     if (!data || !buf)
     	return;
-    ptr = (unsigned char*)data;
+    ptr = (char*)data;
 
     buf[pos] = ptr[0];
     buf[pos + 1] = ptr[1];
@@ -22,13 +51,13 @@ static void float2Byte(float *data, unsigned char *buf, unsigned char pos)
     buf[pos + 3] = ptr[3];
 }
 
-static void int2Byte(int *data, unsigned char *buf, unsigned char pos)
+static void int2Byte(int *data, char *buf, unsigned char pos)
 {
-    unsigned char *ptr;
+    char *ptr;
 
     if (!data || !buf)
     	return;
-    ptr = (unsigned char*)data;
+    ptr = (char*)data;
 
     buf[pos] = ptr[0];
     buf[pos + 1] = ptr[1];
@@ -38,7 +67,7 @@ static void int2Byte(int *data, unsigned char *buf, unsigned char pos)
 
 #define BUF_LEN 42
 #define TIMEOUT 1000
-uint8_t debug_buf[BUF_LEN];
+char debug_buf[BUF_LEN];
 
 void debug_tool_init(void)
 {
@@ -149,5 +178,5 @@ void db_data_update(struct db_data * data, void* value)
 
 void db_show_data(void)
 {
-	HAL_UART_Transmit(&huart1, debug_buf, BUF_LEN, TIMEOUT);
+	HAL_UART_Transmit(&huart1, (uint8_t*)debug_buf, BUF_LEN, TIMEOUT);
 }
