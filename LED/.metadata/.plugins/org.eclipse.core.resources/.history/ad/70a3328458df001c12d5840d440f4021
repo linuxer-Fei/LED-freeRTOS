@@ -150,6 +150,8 @@ void StartDefaultTask(void *argument)
   db_creat(&acc_y);
   db_creat(&acc_z);
   struct gyro_acc_data data;
+  float test1 = 10086.1;
+  int test2 = 1314;
   for(;;)
   {
 	  if (keyIntOccered) {
@@ -159,7 +161,7 @@ void StartDefaultTask(void *argument)
 		  OS_LOG(LOW, "[%f, %f, %f], [%f, %f, %f] \r\n",
 		  	  data.gyro_x, data.gyro_y, data.gyro_z,
 		  	  data.acc_x, data.acc_y,data.acc_z);
-#if 1
+#if 0
 		  db_data_update(&gyro_x, &data.gyro_x);
 		  db_data_update(&gyro_y, &data.gyro_y);
 		  db_data_update(&gyro_z, &data.gyro_z);

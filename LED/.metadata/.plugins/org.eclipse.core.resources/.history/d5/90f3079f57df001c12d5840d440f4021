@@ -24,7 +24,7 @@ enum {
 #if DEBUG_LOG_ENABLE
 #define OS_LOG(level, format, ...) do {\
 	if (level >= LOG_LEVEL) {\
-		printf("[%3f]: " format, (float)HAL_GetTick()/1000,  ##__VA_ARGS__);\
+		printf("[%3f]: %s: " format, (float)HAL_GetTick()/1000, __FUNCTION__,  ##__VA_ARGS__);\
 	}\
 } while (0)
 #else

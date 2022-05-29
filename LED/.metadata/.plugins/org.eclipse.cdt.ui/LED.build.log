@@ -1,6 +1,5 @@
-23:48:57 **** Incremental Build of configuration Release for project LED ****
+22:12:22 **** Incremental Build of configuration Release for project LED ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/debug_tool.c" -mcpu=cortex-m3 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/debug_tool.d" -MT"Core/Src/debug_tool.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/debug_tool.o"
 arm-none-eabi-gcc "../Core/Src/freertos.c" -mcpu=cortex-m3 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -Os -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/freertos.d" -MT"Core/Src/freertos.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/freertos.o"
 arm-none-eabi-gcc -o "LED.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\temp\LED-freeRTOS\LED\LED\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LED.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: LED.elf
@@ -9,7 +8,7 @@ arm-none-eabi-size   LED.elf
 arm-none-eabi-objdump -h -S  LED.elf  > "LED.list"
 arm-none-eabi-objcopy  -O ihex  LED.elf  "LED.hex"
    text	   data	    bss	    dec	    hex	filename
-  31236	    488	   8600	  40324	   9d84	LED.elf
+  31020	    488	   8600	  40108	   9cac	LED.elf
 Finished building: default.size.stdout
  
 Finished building: LED.hex
@@ -17,5 +16,5 @@ Finished building: LED.hex
 Finished building: LED.list
  
 
-23:48:58 Build Finished. 0 errors, 0 warnings. (took 1s.818ms)
+22:12:24 Build Finished. 0 errors, 0 warnings. (took 1s.611ms)
 

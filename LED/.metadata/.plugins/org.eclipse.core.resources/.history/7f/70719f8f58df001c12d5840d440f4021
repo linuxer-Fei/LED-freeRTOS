@@ -150,6 +150,8 @@ void StartDefaultTask(void *argument)
   db_creat(&acc_y);
   db_creat(&acc_z);
   struct gyro_acc_data data;
+  float test1 = 10086.1;
+  int test2 = 1314;
   for(;;)
   {
 	  if (keyIntOccered) {
@@ -168,7 +170,7 @@ void StartDefaultTask(void *argument)
 		  db_data_update(&acc_z, &data.acc_z);
 		  db_show_data();
 #endif
-		  osDelay(10);
+		  //osDelay(10);
 		  //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
 	  } else {
 		  osDelay(1);
